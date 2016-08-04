@@ -8,6 +8,8 @@
 #include<string.h>
 #include<fcntl.h>
 #include<strings.h>
+#include<sys/stat.h>
+
 
 #define PORT  80
 #define SERVER_IP "192.168.128.95"
@@ -27,7 +29,7 @@ int main()
     if((s = socket(AF_INET, SOCK_STREAM, 0)) < 0 ){
      perror("socket");
      exit(1);
-   }
+    }
 
      bzero(&addr, sizeof(addr));
      addr.sin_family = AF_INET;
@@ -37,44 +39,16 @@ int main()
       if(connect(s,(struct sockaddr*) &addr, sizeof(addr)) < 0) {
         perror("connect");
         exit(1);
-      }
-
-        // memset(buffer,0,sizeof(buffer));
+       }
            sprintf(buffer,"%s",var);
-         // printf("%s\n",buffer);
-
            write(s,buffer,strlen(buffer));
            bzero(buffer, sizeof(buffer));
-          // read(s,buffer,sizeof(buffer));
-           recv(s, buffer, sizeof(buffer),0);
-           printf("%s\n",buffer);
-           bzero(buffer, sizeof(buffer));
-           recv(s, buffer, sizeof(buffer),0);
-           printf("%s\n",buffer);
-         //printf("%d\n",len);
-       //  FILE*fp = fopen("1.txt","r");
-         //while(fgets(buffer,1024,fp)!=NULL){
-         //write(s,buffer,sizeof(buffer));
 
-         //read(s,buffer,sizeof(buffer));
-         //printf("%s\n",buffer);}
-
-        //while(1){
-          //  bzero(buffer, sizeof(buffer));
-           // sprintf(buffer,"%s",var);
-           // printf("%s\n",buffer);
-            //read(STDIN_FILENO,buffer,sizeof(buffer));
-          // sendto(s,buffer,len,0,(struct sockaddr*)&addr,addr_len);
-           //len = recvfrom(s,buffer,sizeof(buffer),0,(struct sockaddr*)&addr,&addr_len);
-          // printf("receive: %s",buffer);
-        // if(send(s,buffer,sizeof(buffer),0) < 0){
-          // perror("send");
-          // exit(1);
-          // }
-
-         // fclose(fp);
-
-       // }
+          	 recv(s, buffer, sizeof(buffer),0);
+           	 printf("%s\n",buffer);
+           	 bzero(buffer, sizeof(buffer));
+          	 recv(s, buffer, sizeof(buffer),0);
+          	 printf("%s\n",buffer);
 
   }
 
