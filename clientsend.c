@@ -14,9 +14,8 @@
 
 int main()
  {
-  int s,len=0;
+  int s;
   struct sockaddr_in addr;
-  //int addr_len = sizeof(struct sockaddr_in);
   char buffer[1024];
   char var[]="GET /1.txt HTTP/1.1\r\n"
              "User-Agent: Wget/1.17.1(linux-gnu)\r\n"
@@ -24,9 +23,8 @@ int main()
              "Accept-Encoding: identity\r\n"
              "Host: 192.168.128.34\r\n"
              "Connection: Keep-Alive\r\n\r\n";
- // char buf[1024];
 
-   if((s = socket(AF_INET, SOCK_STREAM, 0)) < 0 ){
+    if((s = socket(AF_INET, SOCK_STREAM, 0)) < 0 ){
      perror("socket");
      exit(1);
    }
@@ -42,7 +40,7 @@ int main()
       }
 
         // memset(buffer,0,sizeof(buffer));
-          sprintf(buffer,"%s",var);
+           sprintf(buffer,"%s",var);
          // printf("%s\n",buffer);
 
            write(s,buffer,strlen(buffer));
