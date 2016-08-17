@@ -15,7 +15,7 @@
 
 int main(int argc, char *argv[])
  {
-  int s,len,ch,ch1,ch2,ret=0;
+  int s,len,ch,ch1,ch2;
   struct sockaddr_in addr;
   char buffer[1024];
   //unsigned short ip,port,file;
