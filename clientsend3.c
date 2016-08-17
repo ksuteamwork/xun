@@ -15,10 +15,10 @@
 
 int main(int argc, char *argv[])
  {
-  int s,len,ch,ch1,ch2,ret=0,a,b,c;
+  int s,len,ch,ch1,ch2,ret=0;
   struct sockaddr_in addr;
   char buffer[1024];
-  unsigned short ip,port,file;
+  //unsigned short ip,port,file;
     FILE * fd;
 
            if((s = socket(AF_INET, SOCK_STREAM, 0)) < 0 ){
@@ -30,11 +30,11 @@ int main(int argc, char *argv[])
                addr.sin_family = AF_INET;
 
                ch = getopt(argc, argv, "i:");
-                  a = sscanf(optarg,"%hu",&ip);
+                 // a = sscanf(optarg,"%hu",&ip);
                    addr.sin_addr.s_addr = inet_addr(optarg);
 
                ch1 = getopt(argc, argv, "p:");
-                  b = sscanf(optarg,"%hu",&port);
+                  //b = sscanf(optarg,"%hu",&port);
                    addr.sin_port = htons(atoi(optarg));
               // addr.sin_port = htons(atoi(optarg));
               // addr.sin_addr.s_addr = inet_addr(optarg);
@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
            exit(1);
          }
              ch2 = getopt(argc, argv, "r:");
-               c = sscanf(optarg,"%hu",&file);
+              // c = sscanf(optarg,"%hu",&file);
               sprintf(buffer,"GET /%s HTTP/1.1\r\n"
                              "User-Agent: Wget/1.17.1(linux-gnu)\r\n"
                              "Accept: */*\r\n"
