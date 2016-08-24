@@ -23,7 +23,7 @@ void print(int arr[], int n, int r){
  }
 
 int main(){
-int arr[]={2,5,31,1,7,0,6,8,4};
+int arr[]={2,5,31,13,7,6,8,4,9};
 int r,n;
   r = 8;
    n = sizeof(arr)/sizeof(int);
