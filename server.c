@@ -18,7 +18,7 @@ int main(){
   int addr_len = sizeof(struct sockaddr_in);
   fd_set readfds;
   char buffer[256];
-  char msg[]="hellow";
+  char msg[]="hello!!! what r u doing?";
    if((sockfd = socket(AF_INET,SOCK_STREAM,0)) < 0) {
 
       perror("socket");
@@ -59,9 +59,11 @@ int main(){
         if(sockfd == fd){
          if((newsockfd = accept(sockfd,(struct sockaddr*)&addr,&addr_len)) < 0)
                    perror("accept");
-         write(newsockfd, msg, sizeof(msg));
+          write(newsockfd, msg, sizeof(msg));
+
          is_connected[newsockfd] = 1;
          printf("Connect from %s\n",inet_ntoa(addr.sin_addr));
+
    }else{
         bzero(buffer,sizeof(buffer));
         if(read(fd, buffer, sizeof(buffer)) <= 0){
@@ -70,6 +72,12 @@ int main(){
            close(fd);
    } else
        printf("%s",buffer);
+        read(STDIN_FILENO,buffer,sizeof(buffer));
+          send(newsockfd,buffer,sizeof(buffer),0);
+            bzero(buffer,sizeof(buffer));
+      /*  if(strcmp(buffer,"1")){
+         system("/home/test/fi");
+        }*/
      }
 
     }

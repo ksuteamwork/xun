@@ -9,8 +9,8 @@
 #include<fcntl.h>
 #include<strings.h>
 
-#define PORT  80
-#define SERVER_IP "192.168.128.65"
+#define PORT  1234
+#define SERVER_IP "192.168.128.34"
 
 int main()
  {
@@ -33,20 +33,19 @@ int main()
         perror("connect");
         exit(1);
       }
-
-
+         while(1){
          recv(s, buffer, sizeof(buffer), 0);
          printf("%s\n",buffer);
-
-        while(1){
             bzero(buffer, sizeof(buffer));
-
             read(STDIN_FILENO,buffer,sizeof(buffer));
-         if(send(s,buffer,sizeof(buffer),0) < 0){
-           perror("send");
-           exit(1);
-           }
-
+         send(s,buffer,sizeof(buffer),0);
+        // bzero(buffer, sizeof(buffer));
+         // printf("%s",buffer);
+          // perror("send");
+           //exit(1);
+          // }
+           //close(s);
         }
+
   }
 
